@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwelonke Security & Protection Services | Protecting What Matters Most</title>
+    
+    <!-- Performance Preconnects -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandWhite: '#FFFFFF',
+                        brandBlue: '#1828D8',
+                        brandBlueHover: '#101eb8',
+                        brandGold: '#B08A48',
+                        brandGoldHover: '#96733a',
+                        brandBlack: '#000000',
+                        lightBg: '#F5F5F5'
+                    },
+                    fontFamily: {
+                        anton: ['Anton', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Anton Bold -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- FontAwesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <style>
+        .gold-border { border-color: #B08A48; }
+        .gold-text { color: #B08A48; }
+        .blue-gradient { background: linear-gradient(135deg, #1828D8 0%, #3048E8 100%); }
+        .gold-gradient { background: linear-gradient(135deg, #1828D8 0%, #B08A48 100%); }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 250px;
+            opacity: 1;
+        }
+        .accordion-item.active .service-arrow {
+            transform: rotate(90deg);
+            color: #1828D8;
+        }
+        .accordion-item.active .service-number {
+            color: #1828D8;
+        }
+        .accordion-item.active .service-title {
+            color: #1828D8;
+        }
+        /* Header scroll hide transition */
+        #site-header {
+            transition: transform 0.3s ease-in-out;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        /* Smooth blending for JPEG logo background */
+        .logo-blend {
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body class="bg-brandWhite text-brandBlack font-sans antialiased selection:bg-brandBlue selection:text-brandWhite overflow-x-hidden">
+
+    <!-- Top Emergency Bar -->
+    <div class="bg-brandBlue text-brandWhite text-xs sm:text-sm py-2 px-4 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:space-x-4">
+                <span><i class="fas fa-clock text-brandGold mr-1"></i> Operating Hours: 24 Hour Availability</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline"><i class="fas fa-map-marker-alt text-brandGold mr-1"></i> Cape Town, Mpumalanga & KwaZulu-Natal</span>
+            </div>
+            <div class="flex items-center space-x-4 font-semibold">
+                <a href="tel:+27840212878" class="hover:text-brandGold transition"><i class="fas fa-phone text-brandGold mr-1"></i> +27 84 021 2878</a>
+                <span>/</span>
+                <a href="tel:+27733109973" class="hover:text-brandGold transition">+27 73 310 9973</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Logo in Exact Center and Hamburger on Right -->
+    <header id="site-header" class="sticky top-0 z-50 bg-brandWhite/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between relative">
+            
+            <!-- Left Space / Hidden anchor to balance header grid if needed -->
+            <div class="w-10"></div>
+
+            <!-- Centered Logo (Absolute Center Alignment) -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                <a href="#" class="group flex flex-col items-center">
+                    <div class="h-16 w-36 sm:h-20 sm:w-44 overflow-hidden flex items-center justify-center">
+                        <img src="https://i.imgur.com/G4faDEt.jpeg" alt="Zwelonke Logo" class="w-full h-full object-contain logo-blend scale-110" loading="eager">
+                    </div>
+                </a>
+            </div>
+
+            <!-- Right Mobile Menu Toggle Button -->
+            <div class="flex items-center justify-end z-10">
+                <button id="menu-btn" class="text-brandBlack focus:outline-none p-3 rounded-lg hover:bg-gray-100 transition" aria-label="Toggle Menu">
+                    <i class="fas fa-bars text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brandWhite border-b border-gray-200 px-6 pt-4 pb-6 space-y-3 shadow-xl">
+            <a href="#services" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">Services</a>
+            <a href="#about" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">About Us</a>
+            <a href="#director" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">Director</a>
+            <a href="#why-choose-us" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">Why Us</a>
+            <a href="#gallery" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">Gallery</a>
+            <a href="#faq" class="block py-2.5 text-sm font-semibold hover:text-brandBlue border-b border-gray-100">FAQ</a>
+            <a href="#contact-form" class="block text-center w-full bg-brandBlue text-brandWhite py-3 rounded-xl font-semibold mt-4 shadow-md">Get Protected</a>
+        </div>
+    </header>
+
+    <!-- Thin Divider Line with Royal Blue and Gold Accents -->
+    <div class="w-full h-1 bg-gradient-to-r from-brandBlue via-brandGold to-brandBlue"></div>
+
+    <!-- Hero Section (Clean Pure White Background) -->
+    <section class="py-12 sm:py-20 lg:py-32 bg-brandWhite overflow-hidden border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-8 lg:space-y-10 text-center lg:text-left">
+
+                    <!-- Headline using Anton Bold with increased size -->
+                    <h1 class="font-anton uppercase tracking-wider text-5xl sm:text-7xl lg:text-9xl leading-[0.95]">
+                        <span class="text-brandBlack block drop-shadow-sm">PROTECTING</span>
+                        <span class="text-brandBlue block drop-shadow-sm my-1 lg:ml-8">WHAT MATTERS</span>
+                        <span class="text-brandGold block drop-shadow-sm">MOST.</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light px-2 sm:px-0">
+                        Zwelonke Security & Protection Services provides professional security and protection solutions designed to safeguard people, properties, and businesses with uncompromised reliability across South Africa.
+                    </p>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 px-4 sm:px-0">
+                        <a href="tel:+27840212878" class="w-full sm:w-auto bg-brandBlue text-brandWhite px-6 py-3.5 rounded-xl font-semibold hover:bg-brandBlueHover transition flex items-center justify-center space-x-2.5 shadow-xl shadow-brandBlue/25">
+                            <i class="fas fa-phone text-sm"></i>
+                            <span>Call Now</span>
+                        </a>
+                        <a href="https://wa.me/27840212878?text=Hello%20Zwelonke%20Security,%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="w-full sm:w-auto bg-emerald-600 text-brandWhite px-6 py-3.5 rounded-xl font-semibold hover:bg-emerald-700 transition flex items-center justify-center space-x-2.5 shadow-xl shadow-emerald-600/25">
+                            <i class="fab fa-whatsapp text-base"></i>
+                            <span>WhatsApp Us</span>
+                        </a>
+                        <a href="mailto:angelo@zwelonkeprotection.co.za" class="w-full sm:w-auto bg-brandGold text-brandWhite px-6 py-3.5 rounded-xl font-semibold hover:bg-brandGoldHover transition flex items-center justify-center space-x-2.5 shadow-xl shadow-brandGold/25">
+                            <i class="fas fa-envelope text-sm"></i>
+                            <span>Send Mail</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Integrated Premium Inquiry Form -->
+                <div class="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none">
+                    <div id="contact-form" class="bg-brandWhite p-6 sm:p-9 rounded-3xl shadow-2xl border-t-4 border-brandGold relative backdrop-blur-md bg-white/95">
+                        <div class="absolute -top-3.5 right-8 bg-brandBlue text-brandWhite text-xs px-3.5 py-1 rounded-full font-bold uppercase tracking-wider shadow-lg">
+                            Instant Response
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-brandBlack mb-2 tracking-tight">Request Security Services</h3>
+                        <p class="text-xs text-gray-600 mb-6 font-light">Fill in your details below and our team will get back to you immediately.</p>
+                        
+                        <form id="heroInquiryForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brandBlue text-sm transition bg-gray-50/50" placeholder="Enter your name">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="clientPhone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brandBlue text-sm transition bg-gray-50/50" placeholder="+27 ...">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="clientEmail" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brandBlue text-sm transition bg-gray-50/50" placeholder="name@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Service Required</label>
+                                <select id="clientService" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brandBlue text-sm bg-gray-50/50 transition">
+                                    <option value="Armed & Unarmed Security Guards">Armed & Unarmed Security Guards</option>
+                                    <option value="Residential Security">Residential Security</option>
+                                    <option value="Commercial & Business Security">Commercial & Business Security</option>
+                                    <option value="Industrial & Warehouse Security">Industrial & Warehouse Security</option>
+                                    <option value="Executive & VIP Protection">Executive & VIP Protection</option>
+                                    <option value="Other Security Inquiry">Other Security Service</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-brandBlue text-brandWhite py-3.5 rounded-xl font-semibold hover:bg-brandBlueHover transition shadow-lg shadow-brandBlue/20 flex items-center justify-center space-x-2">
+                                <span>Submit Request</span>
+                                <i class="fas fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+                        <div id="formSuccessMessage" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl text-center font-medium">
+                            Thank you! Your information has been successfully routed to angelo@zwelonkeprotection.co.za.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-20 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlack uppercase tracking-tight">About Zwelonke Security</h2>
+                <div class="w-20 h-1 bg-brandGold mx-auto rounded-full"></div>
+                <p class="text-base sm:text-lg text-gray-700 leading-relaxed pt-2 px-2 sm:px-0">
+                    Zwelonke Security & Protection Services provides professional security and protection solutions designed to safeguard people, properties and businesses. With a strong focus on reliability, professionalism and client peace of mind, we are committed to delivering dependable protection across Cape Town, Mpumalanga and KwaZulu-Natal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Director Section -->
+    <section id="director" class="py-16 bg-lightBg border-y border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brandWhite rounded-2xl p-6 sm:p-12 shadow-lg border border-gray-100 flex flex-col md:flex-row items-center gap-8">
+                <!-- Circular Director Image -->
+                <div class="flex-shrink-0 relative">
+                    <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full p-1 gold-gradient shadow-xl flex items-center justify-center overflow-hidden bg-gray-200">
+                        <img src="https://i.imgur.com/9q8iswB.jpeg" alt="Angelo Arendse - Director" class="w-full h-full object-cover rounded-full" loading="eager">
+                    </div>
+                    <div class="absolute bottom-2 right-2 bg-brandBlue text-brandWhite p-2 rounded-full shadow-md border-2 border-brandWhite">
+                        <i class="fas fa-award text-brandGold text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Director Bio -->
+                <div class="space-y-4 text-center md:text-left">
+                    <div class="inline-block bg-brandBlue/10 text-brandBlue text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Executive Leadership
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-brandBlack">Angelo Arendse</h3>
+                    <p class="text-brandGold font-semibold text-sm">Managing Director — Zwelonke Security & Protection Services</p>
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Led by Director Angelo Arendse, our company upholds stringent operational protocols, highly trained tactical personnel, and uncompromising dedication to client safety throughout Cape Town, KwaZulu-Natal and Mpumalanga.
+                    </p>
+                    <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:space-x-4">
+                        <a href="tel:+27840212878" class="text-xs font-semibold text-brandBlue hover:underline flex items-center gap-1">
+                            <i class="fas fa-phone"></i> Direct Contact
+                        </a>
+                        <span class="hidden sm:inline text-gray-300">|</span>
+                        <a href="mailto:angelo@zwelonkeprotection.co.za" class="text-xs font-semibold text-brandBlue hover:underline flex items-center gap-1">
+                            <i class="fas fa-envelope"></i> angelo@zwelonkeprotection.co.za
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Interactive Core Services Section -->
+    <section id="services" class="py-20 lg:py-32 bg-brandWhite">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gray-200 gap-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandGold bg-brandGold/10 px-3 py-1 rounded-full">Index / Capabilities</span>
+                    <h2 class="text-3xl sm:text-5xl font-light text-brandBlack tracking-tight uppercase mt-4">Core <span class="font-bold text-brandBlue">Services</span></h2>
+                </div>
+                <p class="text-gray-600 text-sm max-w-sm leading-relaxed">
+                    Interactive directory of specialized protection protocols engineered for residential, commercial, and industrial security.
+                </p>
+            </div>
+
+            <!-- Interactive Vertical Index List -->
+            <div id="services-list" class="divide-y divide-gray-200 border-t border-b border-gray-200">
+                
+                <!-- Service 01 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">01</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Armed & Unarmed Security Guards</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Highly disciplined, vetted, and PSIRA-registered personnel trained for threat deterrence, tactical observation, and immediate emergency response across high-risk sectors.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 02 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">02</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Residential Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Comprehensive estate and home protection protocols designed to keep families, gated communities, and private residential properties secure 24/7.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 03 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">03</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Commercial & Business Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Professional asset protection for corporate offices, retail spaces, and business parks against unauthorized access, inventory shrinkage, and internal vulnerability.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 04 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">04</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Industrial & Warehouse Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Robust perimeter patrols, stock control verification, and freight yard protection engineered for heavy-duty industrial complexes and logistical hubs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 05 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">05</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Construction Site Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Specialized site monitoring, heavy machinery safeguarding, and material theft prevention tailored for active construction zones.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 06 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">06</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Access Control & Gate Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Strict visitor management, vehicle logging, credential verification, and automated barrier control at all facility entry and exit checkpoints.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 07 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">07</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">24/7 Security Monitoring</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Round-the-clock control room oversight ensuring immediate alert verification, alarm response coordination, and live monitoring.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 08 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">08</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Armed Response Services</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Rapid tactical response units strategically deployed across Cape Town, KZN and Mpumalanga for high-urgency emergency intervention and tactical backup.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 09 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">09</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">CCTV Surveillance & Monitoring</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Advanced camera installations, AI-driven perimeter analytics, and live remote monitoring to deter intruders and secure evidentiary records.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 10 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">10</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Event & Crowd Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Professional crowd control, access vetting, and security management for public gatherings, corporate functions, and private events.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 11 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">11</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Executive & VIP Protection</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Discrete close-protection officers, secure convoy transit details, and threat assessment for high-profile individuals and corporate executives.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 12 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">12</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Retail & Shopping Centre Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Loss prevention specialists, mall floor patrols, and customer safety management optimized for busy retail environments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 13 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">13</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Patrol & Mobile Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            High-visibility mobile vehicle patrols covering wide geographic perimeters, industrial parks, and multiple suburban properties.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 14 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">14</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">School & Educational Facility Security</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Safe learning environments maintained through controlled campus access, visitor vetting, and dedicated student safety personnel.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 15 -->
+                <div class="accordion-item group cursor-pointer py-6 sm:py-8 transition-colors duration-300" onclick="toggleService(this)">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-baseline space-x-4 sm:space-x-12">
+                            <span class="service-number text-sm sm:text-base font-mono text-gray-400 group-hover:text-brandBlue transition-colors">15</span>
+                            <h3 class="service-title text-lg sm:text-3xl font-medium text-brandBlack group-hover:text-brandBlue transition-colors">Security Risk Assessments & Consultations</h3>
+                        </div>
+                        <div class="service-arrow text-gray-400 text-lg sm:text-2xl transition-transform duration-300 pl-2">
+                            →
+                        </div>
+                    </div>
+                    <div class="accordion-content pl-8 sm:pl-20 pr-6 pt-4">
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+                            Comprehensive professional security audits, vulnerability analysis, and tailored master protection planning for enterprises and estates.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Numbered) -->
+    <section id="why-choose-us" class="py-16 sm:py-20 bg-lightBg border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brandGold bg-brandGold/10 px-3 py-1 rounded-full">The Zwelonke Standard</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlack uppercase tracking-tight">Why Choose Us</h2>
+                <div class="w-20 h-1 bg-brandBlue mx-auto rounded-full"></div>
+                <p class="text-gray-600 text-sm sm:text-base">
+                    What sets us apart as a premier security partner across Cape Town, Mpumalanga and KwaZulu-Natal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200 relative">
+                    <div class="text-3xl font-black text-brandGold mb-3">01</div>
+                    <h3 class="text-base font-bold text-brandBlack mb-2">24/7 Availability</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Always on guard with continuous dispatch and support available around the clock.</p>
+                </div>
+
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200 relative">
+                    <div class="text-3xl font-black text-brandGold mb-3">02</div>
+                    <h3 class="text-base font-bold text-brandBlack mb-2">PSIRA Accredited & Trained</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Strictly compliant officers trained to handle critical high-pressure security threats.</p>
+                </div>
+
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200 relative">
+                    <div class="text-3xl font-black text-brandGold mb-3">03</div>
+                    <h3 class="text-base font-bold text-brandBlack mb-2">Local Expertise</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Deep operational footprint across Cape Town, Mpumalanga and KwaZulu-Natal with rapid regional response.</p>
+                </div>
+
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200 relative">
+                    <div class="text-3xl font-black text-brandGold mb-3">04</div>
+                    <h3 class="text-base font-bold text-brandBlack mb-2">Client Peace of Mind</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Unwavering commitment to reliability, professionalism, and absolute client confidentiality.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Populated with Images - Eagerly Loaded) -->
+    <section id="gallery" class="py-16 sm:py-20 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brandGold bg-brandGold/10 px-3 py-1 rounded-full">Visual Showcase</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlack uppercase tracking-tight">Operations Gallery</h2>
+                <div class="w-20 h-1 bg-brandBlue mx-auto rounded-full"></div>
+                <p class="text-gray-600 text-sm sm:text-base">
+                    Visual highlights of our security deployments and operational readiness.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Slot 1 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/nmIk4Hl.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 2 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/bcZe5mK.jpeg" alt="Gallery Image 2" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 3 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/LUTTqQI.jpeg" alt="Gallery Image 3" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 4 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/RPfTjfV.jpeg" alt="Gallery Image 4" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 5 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/5Htbr3T.jpeg" alt="Gallery Image 5" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 6 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/Q5woBut.jpeg" alt="Gallery Image 6" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 7 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/YztgBfO.jpeg" alt="Gallery Image 7" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 8 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/VgQpG1B.jpeg" alt="Gallery Image 8" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 9 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/UgyFxw4.jpeg" alt="Gallery Image 9" class="w-full h-full object-cover" loading="eager">
+                </div>
+                <!-- Slot 10 -->
+                <div class="h-40 sm:h-44 bg-gray-100 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                    <img src="https://i.imgur.com/0VOWMVk.jpeg" alt="Gallery Image 10" class="w-full h-full object-cover" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Numbered) -->
+    <section id="faq" class="py-16 sm:py-20 bg-lightBg border-y border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brandGold bg-brandGold/10 px-3 py-1 rounded-full">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlack uppercase tracking-tight">Frequently Asked Questions</h2>
+                <div class="w-20 h-1 bg-brandBlue mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-start space-x-4">
+                        <span class="text-brandGold font-black text-lg">01</span>
+                        <div>
+                            <h3 class="text-base font-bold text-brandBlack mb-1">What regions do Zwelonke Security & Protection Services cover?</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">We deliver dependable security and protection solutions across Cape Town, Mpumalanga and KwaZulu-Natal with rapid regional response teams.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-start space-x-4">
+                        <span class="text-brandGold font-black text-lg">02</span>
+                        <div>
+                            <h3 class="text-base font-bold text-brandBlack mb-1">Are your security guards fully accredited and licensed?</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">Yes, all our armed and unarmed security personnel are fully PSIRA registered, vetted, and rigorously trained.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-start space-x-4">
+                        <span class="text-brandGold font-black text-lg">03</span>
+                        <div>
+                            <h3 class="text-base font-bold text-brandBlack mb-1">What are your operating hours?</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">We offer 24-hour availability, 365 days a year, ensuring continuous protection and monitoring.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-brandWhite rounded-xl p-6 shadow-sm border border-gray-200">
+                    <div class="flex items-start space-x-4">
+                        <span class="text-brandGold font-black text-lg">04</span>
+                        <div>
+                            <h3 class="text-base font-bold text-brandBlack mb-1">How can I request a security risk assessment for my business?</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">You can fill out our inquiry form at the top of the page, call us directly at +27 84 021 2878, or email angelo@zwelonkeprotection.co.za.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="bg-brandBlack text-brandWhite pt-16 pb-12 border-t-4 border-brandGold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                
+                <!-- Col 1: Brand & PSiRA -->
+                <div class="space-y-4 md:col-span-1">
+                    <h3 class="font-bold tracking-wider text-sm uppercase italic text-white leading-relaxed">
+                        Trust Zwelonke Security & Protection Services
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Protecting what matters most with professional security solutions across Cape Town, Mpumalanga and KwaZulu-Natal.
+                    </p>
+                    <div class="pt-1">
+                        <span class="inline-block bg-gray-900 border border-brandGold/40 text-brandGold text-[11px] font-mono px-2.5 py-1 rounded">
+                            PSiRA Registration: 877980
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brandGold">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#services" class="hover:text-brandGold transition">Our Services</a></li>
+                        <li><a href="#about" class="hover:text-brandGold transition">About Us</a></li>
+                        <li><a href="#director" class="hover:text-brandGold transition">Director Profile</a></li>
+                        <li><a href="#why-choose-us" class="hover:text-brandGold transition">Why Choose Us</a></li>
+                        <li><a href="#faq" class="hover:text-brandGold transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Compliance & Legal -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brandGold">Compliance & Legal</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><button onclick="openModal('privacyModal')" class="hover:text-brandGold transition flex items-center gap-1.5 text-left"><i class="fas fa-shield-alt text-brandGold text-[10px]"></i> Privacy Policy</button></li>
+                        <li><button onclick="openModal('popiaModal')" class="hover:text-brandGold transition flex items-center gap-1.5 text-left"><i class="fas fa-lock text-brandGold text-[10px]"></i> POPIA Compliance</button></li>
+                        <li><button onclick="openModal('termsModal')" class="hover:text-brandGold transition flex items-center gap-1.5 text-left"><i class="fas fa-file-contract text-brandGold text-[10px]"></i> Terms & Conditions</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Details & Social -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brandGold">Contact Details</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><i class="fas fa-phone text-brandGold mr-2"></i> <a href="tel:+27840212878" class="hover:underline">+27 84 021 2878</a></li>
+                        <li><i class="fas fa-phone text-brandGold mr-2"></i> <a href="tel:+27733109973" class="hover:underline">+27 73 310 9973</a></li>
+                        <li><i class="fab fa-whatsapp text-brandGold mr-2"></i> <a href="https://wa.me/27840212878" target="_blank" class="hover:underline">+27 84 021 2878</a></li>
+                        <li><i class="fas fa-envelope text-brandGold mr-2"></i> <a href="mailto:angelo@zwelonkeprotection.co.za" class="hover:underline">angelo@zwelonkeprotection.co.za</a></li>
+                    </ul>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="https://www.instagram.com/zwelonkeprotection.co.za?igsi=dmw5am11N3cwOTN2" target="_blank" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-700 flex items-center justify-center text-brandWhite hover:bg-brandBlue hover:border-brandBlue transition text-xs" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/27840212878" target="_blank" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-700 flex items-center justify-center text-brandWhite hover:bg-emerald-600 hover:border-emerald-600 transition text-xs" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:angelo@zwelonkeprotection.co.za" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-700 flex items-center justify-center text-brandWhite hover:bg-brandGold hover:border-brandGold transition text-xs" title="Mail">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4 text-center sm:text-left">
+                <p>&copy; 2026 Zwelonke Security & Protection Services (PSiRA Reg: 877980). All rights reserved.</p>
+                <p class="text-brandGold font-medium">Protecting What Matters Most.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LEGAL MODALS CONTAINER -->
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto text-brandBlack relative shadow-2xl">
+            <button onclick="closeModal('privacyModal')" class="absolute top-4 right-4 text-gray-400 hover:text-brandBlack text-xl p-2"><i class="fas fa-xmark"></i></button>
+            <h3 class="text-2xl font-black text-brandBlue uppercase mb-4">Privacy Policy</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <p><strong>Zwelonke Security & Protection Services</strong> ("we", "our", "us") is committed to protecting your personal information and privacy. This Privacy Policy details how we collect, use, and safeguard information obtained through our website and operational services.</p>
+                <h4 class="font-bold text-brandBlack pt-2">1. Information We Collect</h4>
+                <p>We collect personal details such as full names, phone numbers, email addresses, and service requirements submitted via our inquiry forms or direct communication channels.</p>
+                <h4 class="font-bold text-brandBlack pt-2">2. Use of Information</h4>
+                <p>Collected data is used solely to respond to security inquiries, schedule security risk assessments, provide quotations, and execute agreed-upon protection services.</p>
+                <h4 class="font-bold text-brandBlack pt-2">3. Data Security</h4>
+                <p>We implement strict administrative, technical, and physical security controls to prevent unauthorized access, disclosure, or alteration of client information.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200 text-right">
+                <button onclick="closeModal('privacyModal')" class="bg-brandBlue text-white px-5 py-2 rounded-xl text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPIA Compliance Modal -->
+    <div id="popiaModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto text-brandBlack relative shadow-2xl">
+            <button onclick="closeModal('popiaModal')" class="absolute top-4 right-4 text-gray-400 hover:text-brandBlack text-xl p-2"><i class="fas fa-xmark"></i></button>
+            <h3 class="text-2xl font-black text-brandBlue uppercase mb-4">POPIA Compliance Statement</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <p>In accordance with the <strong>Protection of Personal Information Act (POPIA)</strong> of South Africa, Zwelonke Security & Protection Services ensures that all personal information is processed lawfully, transparently, and securely.</p>
+                <h4 class="font-bold text-brandBlack pt-2">1. Accountability</h4>
+                <p>We take full responsibility for personal data collected from clients and prospective partners across Cape Town, Mpumalanga and KwaZulu-Natal.</p>
+                <h4 class="font-bold text-brandBlack pt-2">2. Purpose Specification</h4>
+                <p>Personal information is gathered for explicit security operational purposes only and is never sold, traded, or distributed to third-party marketers.</p>
+                <h4 class="font-bold text-brandBlack pt-2">3. Data Subject Rights</h4>
+                <p>You have the right to request access to your personal records held by us, request corrections, or object to the processing of your data by contacting angelo@zwelonkeprotection.co.za.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200 text-right">
+                <button onclick="closeModal('popiaModal')" class="bg-brandBlue text-white px-5 py-2 rounded-xl text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto text-brandBlack relative shadow-2xl">
+            <button onclick="closeModal('termsModal')" class="absolute top-4 right-4 text-gray-400 hover:text-brandBlack text-xl p-2"><i class="fas fa-xmark"></i></button>
+            <h3 class="text-2xl font-black text-brandBlue uppercase mb-4">Terms & Conditions</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <p>Welcome to <strong>Zwelonke Security & Protection Services</strong> (PSiRA Reg: 877980). By accessing our website or engaging our security services, you agree to abide by the following terms.</p>
+                <h4 class="font-bold text-brandBlack pt-2">1. Professional Security Services</h4>
+                <p>All security guard deployments, armed responses, and risk assessments are conducted by PSiRA-accredited personnel in strict compliance with South African legislative standards.</p>
+                <h4 class="font-bold text-brandBlack pt-2">2. Quotations and Service Agreements</h4>
+                <p>Initial inquiries made via our online portal generate preliminary consultations. Formal security deployment contracts are finalized directly between the client and Managing Director Angelo Arendse.</p>
+                <h4 class="font-bold text-brandBlack pt-2">3. Limitation of Liability</h4>
+                <p>Zwelonke Security maintains rigorous operational vigilance but shall not be held liable for unforeseen force majeure events beyond standard professional security protocols.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200 text-right">
+                <button onclick="closeModal('termsModal')" class="bg-brandBlue text-white px-5 py-2 rounded-xl text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Script -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Header Scroll Hide / Show Logic
+        let lastScrollTop = 0;
+        const header = document.getElementById('site-header');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.classList.add('header-hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('header-hidden');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Editorial Services Interactive Accordion
+        function toggleService(element) {
+            const isActive = element.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // If it wasn't active, open it
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        // Modal Controls
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            ['privacyModal', 'popiaModal', 'termsModal'].forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target === modal) {
+                    closeModal(id);
+                }
+            });
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value;
+            const service = document.getElementById('clientService').value;
+
+            const mailSubject = encodeURIComponent(`New Inquiry: ${service} - ${name}`);
+            const mailBody = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}`);
+            
+            const successBox = document.getElementById('formSuccessMessage');
+            successBox.classList.remove('hidden');
+            
+            setTimeout(() => {
+                window.location.href = `mailto:angelo@zwelonkeprotection.co.za?subject=${mailSubject}&body=${mailBody}`;
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
